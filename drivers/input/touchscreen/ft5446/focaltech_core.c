@@ -3,7 +3,7 @@
  * FocalTech TouchScreen driver.
  *
  * Copyright (c) 2010-2017, FocalTech Systems, Ltd., all rights reserved.
- * Copyright (C) 2019 XiaoMi, Inc.
+ * Copyright (C) 2018 XiaoMi, Inc.
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -33,7 +33,6 @@
 * Included header files
 *****************************************************************************/
 #include "focaltech_core.h"
-#include <linux/hqsysfs.h>
 #if defined(CONFIG_FB)
 #include <linux/notifier.h>
 #include <linux/fb.h>
@@ -133,7 +132,7 @@ static int fts_get_chip_types(
 *  Output:
 *  Return: return 0 if success, otherwise return error code
 *****************************************************************************/
-int fts_get_ic_information(struct fts_ts_data *ts_data)
+static int fts_get_ic_information(struct fts_ts_data *ts_data)
 {
     int ret = 0;
     int cnt = 0;
@@ -555,7 +554,7 @@ static int fts_input_report_b(struct fts_ts_data *data)
             input_mt_report_slot_state(data->input_dev, MT_TOOL_FINGER, false);
             data->touchs &= ~BIT(events[i].id);
             /*Modifiy by HQ-zmc [Date: 2018-03-26 14:13:53]*/
-            FTS_DEBUG("[B]P%d(%d, %d) UP!", events[i].id, events[i].x, events[i].y);
+            FTS_DEBUG("[B]P%d(%d,%d) UP!", events[i].id,events[i].x,events[i].y);
             p_down[events[i].id] = false;
         }
     }

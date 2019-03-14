@@ -85,15 +85,15 @@ static irqreturn_t sar_irq_handler(int irq, void *dev_id)
 	input_data = gpio_get_value(sar_int_gpio);
 
 
-	input_report_key(sdata->input_dev, gpio_key.code, 1);
-  	input_report_key(sdata->input_dev, gpio_key.code, 0);
-	printk("input_report_key , status :%d\n", input_data);
+	input_report_key(sdata->input_dev,gpio_key.code, 1);
+  	input_report_key(sdata->input_dev,gpio_key.code, 0);
+	printk("input_report_key ,status :%d\n",input_data);
 	input_sync(sdata->input_dev);
 
 	spin_unlock_irqrestore(&sdata->irq_lock, irqflags);
 
 
-	printk("gpio_get_value : %d\n", input_data);
+	printk("gpio_get_value : %d\n",input_data);
 
 	return IRQ_HANDLED;
 }
@@ -241,12 +241,12 @@ static int virtualsar_probe (struct i2c_client *client,
 		ret = sar_request_io_port(sdata);
 		if (ret < 0)
 		{
-			printk("SAR %s -request io port fail\n", __func__);
+			printk("SAR %s -request io port fail\n",__func__);
 			return -ENOMEM;
 		}
 	}else
 	{
-		printk("SAR %s -gpio is not valid\n", __func__);
+		printk("SAR %s -gpio is not valid\n",__func__);
 		return -ENOMEM;
 	}
 
@@ -261,7 +261,7 @@ static int virtualsar_probe (struct i2c_client *client,
 	ret = sar_request_irq(sdata);
 	if (ret < 0)
 	{
-		printk("SAR %s -request irq fail\n", __func__);
+		printk("SAR %s -request irq fail\n",__func__);
 	}
 
 	__set_bit(EV_REP, sdata->input_dev->evbit);
@@ -287,7 +287,7 @@ static int __init virtualsar_init(void)
 	pr_debug("SAR  %s - Start driver initialization...\n", __func__);
 
 	ret = i2c_add_driver(&virtualsar_driver);
-	printk("ret : %d\n", ret);
+	printk("ret : %d\n",ret);
 	return ret;
 }
 

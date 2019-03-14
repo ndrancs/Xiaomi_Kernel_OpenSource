@@ -3,7 +3,7 @@
  * FocalTech TouchScreen driver.
  *
  * Copyright (c) 2010-2017, Focaltech Ltd. All rights reserved.
- * Copyright (C) 2019 XiaoMi, Inc.
+ * Copyright (C) 2018 XiaoMi, Inc.
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -176,10 +176,7 @@ void fts_i2c_hid2std(struct i2c_client *client);
 int fts_i2c_init(void);
 int fts_i2c_exit(void);
 
-
-
 void fts_irq_disable(void);
 void fts_irq_enable(void);
-
 
 #endif /* __LINUX_FOCALTECH_CORE_H__ */

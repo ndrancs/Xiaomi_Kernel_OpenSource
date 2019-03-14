@@ -17,7 +17,7 @@ extern "C" {
 #include <linux/gpio_keys.h>
 #include <linux/proc_fs.h>
 #include <linux/of_gpio.h>
-#include <asm/gpio.h>
+#include <asm-generic/gpio.h>
 #include <linux/input.h>
 /*******************************************************************************
  * Platform-specific configuration data
@@ -53,7 +53,7 @@ static int virtualsar_probe(struct i2c_client *client,
 		const struct i2c_device_id *id);
 
 #define SAR_INT_TRIGGER    2
-#define SAR_IRQ_TAB                     {IRQ_TYPE_EDGE_RISING, IRQ_TYPE_EDGE_FALLING, IRQ_TYPE_EDGE_BOTH, IRQ_TYPE_LEVEL_LOW, IRQ_TYPE_LEVEL_HIGH}
+#define SAR_IRQ_TAB                     {IRQ_TYPE_EDGE_RISING, IRQ_TYPE_EDGE_FALLING,IRQ_TYPE_EDGE_BOTH, IRQ_TYPE_LEVEL_LOW, IRQ_TYPE_LEVEL_HIGH}
 
 static const char *sar_name = "vitural-sar";
 static const char *sar_input_phys = "input/sar";
